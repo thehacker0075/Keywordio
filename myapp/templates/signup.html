@@ -1,0 +1,48 @@
+{% extends 'header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<body>
+   
+    <div class="col-md">
+        <div class="col-md-12">
+        <form action="{% url 'signup' %}" method="POST" class="bg-white p-5 contact-form" style="border-radius: 5%;">
+            {% csrf_token %}
+            <h1 align="center"><b>Sign Up</b></h1><br>
+            <div class="form-group">
+              <input type="text" required name="fname" class="form-control" placeholder="First Name">
+            </div>
+            <div class="form-group">
+              <input type="text" required required name="lname" class="form-control" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <input type="text" required id="c_email" name="email" class="form-control" placeholder="Email">
+              <span id="email_error" style="color: red;"></span>
+            </div>
+            <div class="form-group">
+              <input type="tel" required name="mobile" class="form-control" placeholder="Mobile" maxlength="10">
+            </div>
+            <div class="form-group">
+              <textarea name="address" id="" cols="30" rows="7" class="form-control" placeholder="Address"></textarea>
+            </div>
+            <br>
+            <div class="form-group">
+              <input type="password" required name="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <input type="password" required name="cpassword" class="form-control" placeholder="Confirm Password">
+            </div>
+            <div class="form-group">
+              <a><input type="submit" value="Sign Up" class="btn btn-primary py-3 px-5"></a>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    
+</body>
+
+</html>
+{% endblock %}

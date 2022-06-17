@@ -1,0 +1,42 @@
+{% extends 'admin_header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<body>
+   
+    <section class="hero">
+        <div class="container">
+		
+    		<div class="row" >
+        {% for i in books %}
+    			<div class="col-md-6 col-lg-3">
+    				<div class="product">
+    					<a href="#" class="img-prod"><img class="img-fluid" src="{{i.book_image.url}}" style="width: 200px; height: 200px; margin-left: 25px;">
+    						<div class="overlay"></div></a>
+    					<div class="text py-3 pb-4 px-3 text-center">
+    						<h3><a href="#">{{i.book_name}}</a></h3>
+    						<div class="d-flex">
+    							<div class="pricing">
+		    						<p class="price"><span class="price-sale">Rs. {{i.book_price}}</span></p>
+		    					</div>
+	    					</div>
+							<div>
+								<a href="{% url 'admin_edit_book' pk=i.pk %}"><input type="submit" value="EDIT" class="btn btn-info"></a>
+								<a href="{% url 'admin_delete_book' pk=i.pk %}"><input type="submit" value="DELETE" class="btn btn-danger"></a>
+							</div>
+    					</div>
+						
+    				</div>
+    			</div>
+				{% endfor %}
+            </div>
+		
+    	</div>
+    </section>
+    
+</body>
+
+</html>
+{% endblock %}

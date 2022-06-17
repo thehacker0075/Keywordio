@@ -1,0 +1,65 @@
+{% extends 'admin_header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<body>
+   
+    <section align="center">
+        <div>
+              <form action="{% url 'admin_edit_book' pk=book.pk %}" method="POST" enctype="multipart/form-data" class="bg-white p-5 contact-form" style="border-radius: 5%;">
+              {% csrf_token %}
+                <div class="form-group">
+                <h1><b>Update Book</b></h1>
+				<select class="form-group" name="book_collection">
+					{% if book.book_collection == "coding_book" %}
+					<option value="">---Select Collection---</option>
+					<option value="coding_book" selected>Coding Books</option>
+					<option value="hacking_book">Hacking Books</option>
+					<option value="history_book">History Books</option>
+					<option value="general_knowledge">General Knowledge</option>
+					{% elif book.book_collection == "hacking_book" %}
+					<option value="">---Select Collection---</option>
+					<option value="coding_book">Coding Books</option>
+					<option value="hacking_book" selected>Hacking Books</option>
+					<option value="history_book">History Books</option>
+					<option value="general_knowledge">General Knowledge</option>
+					{% elif book.book_collection == "history_book" %}
+					<option value="">---Select Collection---</option>
+					<option value="coding_book">Coding Books</option>
+					<option value="hacking_book">Hacking Books</option>
+					<option value="history_book" selected>History Books</option>
+					<option value="general_knowledge">General Knowledge</option>
+					{% elif book.book_collection == "general_knowledge" %}
+					<option value="">---Select Collection---</option>
+					<option value="coding_book">Coding Books</option>
+					<option value="hacking_book">Hacking Books</option>
+					<option value="history_book">History Books</option>
+					<option value="general_knowledge" selected>General Knowledge</option>
+					{% endif %}
+				</select>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="book_name" class="form-control" value="{{book.book_name}}">
+                </div>
+                <div class="form-group">
+                  <input type="text" name="book_price" class="form-control" value="{{book.book_price}}">
+                </div>
+                <div class="form-group">
+                  <textarea name="book_des" id="" cols="30" rows="7" class="form-control" placeholder="{{book.book_des}}"></textarea>
+                </div>
+                <div class="form-group">
+                  <input type="file" name="book_image" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Update Book" class="btn btn-primary py-3 px-5">
+                </div>
+              </form>
+        </div>
+      </section>
+    
+</body>
+
+</html>
+{% endblock %}
